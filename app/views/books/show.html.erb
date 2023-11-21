@@ -1,8 +1,12 @@
 <div>
   <p><%= @book.title %></p>
   <p><%= @book.body %></p>
-  <p><%= image_tag 'no_image.jpg' %></p>
-  <p><%= @book.user.name %></p>
+  <%= link_to user_path(@book.user_id) do %>
+    <%= image_tag @book.user.get_profile_image(100,100) %>
+  <% end %>
+  <%= link_to user_path(@book.user_id) do %>
+    <%= @book.user.name %>
+  <% end %>
   <% if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path(@book.id) %>
   <% end %>
