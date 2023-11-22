@@ -1,4 +1,8 @@
-
+<h1>User info</h1>
+<p><%= image_tag book.user.get_profile_image(100,100) %></p>
+<span>name</span><%= book.user.name %>
+<span>introduction</span><%= book.user.introduction %>
+<div><%= link_to "Edit", edit_user_path(book.user_id) %></div>
 
 <h1>New book</h1>
 
@@ -17,20 +21,4 @@
   <h4>Opinion</h4>
   <%= f.text_area :body %>
   <div><%= f.submit 'Create Book' %></div>
-<% end %>
-
-
-
-<h4>Books</h4>
-
-<% @books.each do |book| %>
-  <div>
-    <%= link_to user_path(book.user_id) do %>
-      <%= image_tag book.user.get_profile_image(100,100) %>
-    <% end %>
-    <%= link_to book_path(book.id) do %>
-      <%= book.title %>
-    <% end %>
-    <p><%= book.body %></p>
-  </div>
 <% end %>
