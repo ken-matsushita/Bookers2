@@ -1,4 +1,9 @@
 <div>
+  <%= flash[:notice] %>
+</div>
+
+
+<div>
   <p><%= @book.title %></p>
   <p><%= @book.body %></p>
   <%= link_to user_path(@book.user_id) do %>
