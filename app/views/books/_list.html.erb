@@ -1,8 +1,24 @@
+<div>
 <h1>User info</h1>
-<p><%= image_tag book.user.get_profile_image(100,100) %></p>
-<span>name</span><%= book.user.name %>
-<span>introduction</span><%= book.user.introduction %>
-<div><%= link_to "Edit", edit_user_path(book.user_id) %></div>
+<%= image_tag @book.user.get_profile_image(100,100) %>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>name</th>
+    <th>introduction</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+<td><%= @book.user.name %></td>
+<td><%= @book.user.introduction %></td>
+  </tr>
+</tbody>
+</table>
+<%= link_to edit_user_path(@book.user.id), class: "btn btn-outline-secondary" do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
+</div>
 
 <h1>New book</h1>
 
