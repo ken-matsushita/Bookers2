@@ -1,5 +1,6 @@
-
-
+<div class="container">
+<div class="row">
+<div class="col-md-3">
 <h1>New book</h1>
 
 <% if @book.errors.any? %>
@@ -18,19 +19,39 @@
   <%= f.text_area :body %>
   <div><%= f.submit 'Create Book' %></div>
 <% end %>
+</div>
 
+<div class="offset-md-1"></div>
 
-
+<div class="col-md-8">
 <h4>Books</h4>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th colspan="1"></th>
+    <th>Title</th>
+    <th>Opinion</th>
+  </tr>
+</thead>
 
+<tbody>
 <% @books.each do |book| %>
-  <div>
-    <%= link_to user_path(book.user_id) do %>
+  <tr>
+    <td><%= link_to user_path(book.user_id) do %>
       <%= image_tag book.user.get_profile_image(100,100) %>
     <% end %>
+    </td>
+    <td>
     <%= link_to book_path(book.id) do %>
       <%= book.title %>
     <% end %>
-    <p><%= book.body %></p>
-  </div>
+    </td>
+    <td><%= book.body %></td>
+  </tr>
 <% end %>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
